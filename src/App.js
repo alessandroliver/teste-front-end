@@ -15,7 +15,33 @@ const App = () => {
 
 	const initialFormState = { id: '', model: '', price: '', brand: '', color: '', startDate: '', endDate: '' }
 
-    const addProduct = product => {
+	const [ products, setProducts ] = useState(productsData)
+	const [ currentProduct, setCurrentProduct ] = useState(initialFormState)
+	const [ editing, setEditing ] = useState(false)
+
+	function init(e) {
+		document.getElementById("frame2").style.display = "none";
+		document.getElementById("frame1").style.display = "block";	
+	}
+
+	document.addEventListener("DOMContentLoaded", function()
+	{
+		 init();
+	 }, false);
+	 
+	
+	 function codeGenerator() {
+		let codeRandom =  Math.random().toString(36).slice(-8);
+		for (let index = 0; index < products.length; index++) {
+			if (products[index].id.localeCompare(codeRandom) === true){
+				codeGenerator()
+			}
+			
+		}
+		return codeRandom
+	}
+
+	const addProduct = product => {
 		document.getElementById("frame2").style.display = "none";
 		document.getElementById("frame1").style.display = "block";
 
@@ -49,8 +75,12 @@ const App = () => {
 		setCurrentProduct({ id: product.id, model: product.model, price: product.price, brand: product.brand, color: product.color, startDate: product.startDate, endDate: product.endDate })
 	}
 
-    
-    return (
+	function demoDisplay() {
+		document.getElementById("frame1").style.display = "none";
+		document.getElementById("frame2").style.display = "block";
+	}
+
+	return (
 		<div className="container">
 			<div className="flex-column">
 				<div id = 'frame1' className="flex-large">
