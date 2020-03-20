@@ -1,6 +1,11 @@
 import React from 'react'
 
-
+function dateFormat (dateToFormat){
+  var dateOneDay = new Date(dateToFormat)
+  var d = (dateOneDay.getDate() +1) + "/" + ("0" + (dateOneDay.getMonth() + 1)).slice(-2)
+      + '/' +  dateOneDay.getFullYear()
+      return d
+}
 
 const ProductTable = props => (
   <table>
