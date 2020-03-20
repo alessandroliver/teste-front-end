@@ -3,6 +3,9 @@ import AddProductForm from './forms/AddProductForm'
 import EditProductForm from './forms/EditProductForm'
 import ProductTable from './tables/ProductTable'
 
+import Header from '../src/template/Header'
+import Footer from '../src/template/Footer'
+
 import './App.css'
 
 import 'font-awesome/css/font-awesome.min.css'
@@ -81,6 +84,8 @@ const App = () => {
 	}
 
 	return (
+		<React.Fragment>
+		<Header />
 		<div className="container">
 			<div className="flex-column">
 				<div id = 'frame1' className="flex-large">
@@ -113,6 +118,8 @@ const App = () => {
 				</div>
 			</div>
 		</div>
+		<Footer />
+		</React.Fragment>
 	)
 }
 
