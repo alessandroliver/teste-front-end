@@ -10,19 +10,12 @@ const AddProductForm = props => {
 		setProduct({ ...product, [name]: value })
 	}
 
-	function test (){
+	function setMinDate (){
 		var dateOneDay = new Date(document.getElementById("inicDate").value)
-		var d = dateOneDay.getFullYear() + "-" + (dateOneDay.getMonth() + 1) + '-' + (dateOneDay.getDate() +2)
-		var dDate = new Date(d)
-		document.getElementById("finalDate").setAttribute("min", dDate)
-		console.log(d)
-		console.log(document.getElementById("inicDate").value)
-		console.log(dateOneDay)
-		console.log(dateOneDay.getFullYear())
-		//console.log(document.getElementById("inicDate"))
-		//console.log("aqui: " + document.getElementById("finalDate").setAttribute("min"))
+		var d = dateOneDay.getFullYear() + "-" + ("0" + (dateOneDay.getMonth() + 1)).slice(-2)
+				+ '-' + (dateOneDay.getDate() +2)
+		document.getElementById("finalDate").setAttribute("min", d)
 	}
-
 
 
 	return (
@@ -36,11 +29,11 @@ const AddProductForm = props => {
 			}}
 		>
 			<label>Modelo</label>
-			<input type="text" name="model" title="Não é permitido espaço em branco!" pattern="[^' ']+" oninvalid="setCustomValidity('Espaços em branco não são permitidos!')" minLength="2" maxLength="255" value={product.model} onChange={handleInputChange} />
+			<input type="text" name="model" title="Não é permitido espaço em branco!" pattern="[^' ']+" minLength="2" maxLength="255" value={product.model} onChange={handleInputChange} />
 			<label>Preço</label>
 			<input type="number" name="price" min="0.01" step="0.01" value={product.price} onChange={handleInputChange} />
 			<label>Marca</label>
-			<input type="text" name="brand" title="Não é permitido espaço em branco!" minLength="2" pattern="[^' ']+" oninvalid="setCustomValidity('Espaços em branco não são permitidos!')" maxLength="255" value={product.brand} onChange={handleInputChange} />
+			<input type="text" name="brand" title="Não é permitido espaço em branco!" minLength="2" pattern="[^' ']+" maxLength="255" value={product.brand} onChange={handleInputChange} />
 			<label>Cor</label>
       		<select name="color" size="1" value={product.color} onChange={handleInputChange}>
 			  	<option></option>
@@ -52,7 +45,7 @@ const AddProductForm = props => {
 			<label>Início das vendas</label>
 			<input type="date" name="startDate" id = "inicDate"  min="2018-12-26" value={product.startDate} onChange={handleInputChange} />
 			<label>Fim das vendas</label>
-			<input type="date" name="endDate" id = "finalDate" onClick = {test} value={product.endDate} onChange={handleInputChange} />
+			<input type="date" name="endDate" id = "finalDate" onClick = {setMinDate} value={product.endDate} onChange={handleInputChange} />
 			<br />
 			<button onClick={() => props.updateProduct()} className="button muted-button">
         		Voltar

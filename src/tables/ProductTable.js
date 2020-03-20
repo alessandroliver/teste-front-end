@@ -1,5 +1,7 @@
 import React from 'react'
 
+
+
 const ProductTable = props => (
   <table>
     <thead>
@@ -23,8 +25,8 @@ const ProductTable = props => (
             <td>{product.price}</td>
             <td>{product.brand}</td>
             <td>{product.color}</td>
-            <td>{product.startDate}</td>
-            <td>{product.endDate}</td>
+            <td>{dateFormat(product.startDate)}</td>
+            <td>{dateFormat(product.endDate)}</td>
             <td>
               <button
                 onClick={() => {

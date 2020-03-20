@@ -25,6 +25,7 @@ const App = () => {
 	function init(e) {
 		document.getElementById("frame2").style.display = "none";
 		document.getElementById("frame1").style.display = "block";	
+
 	}
 
 	document.addEventListener("DOMContentLoaded", function()
@@ -81,44 +82,59 @@ const App = () => {
 	function demoDisplay() {
 		document.getElementById("frame1").style.display = "none";
 		document.getElementById("frame2").style.display = "block";
+		//document.getElementById('footer1').setAttribute('position', 'absolute')
+		//console.log(document.getElementById('footer1').getAttribute('position'))
+
 	}
+
+	
+
+	document.addEventListener("DOMContentLoaded", function (event) {
+		//document.getElementById('footer1').setAttribute('position', 'relative')
+
+	}, false);
+
 
 	return (
 		<React.Fragment>
-		<Header />
-		<div className="container">
-			<div className="flex-column">
-				<div id = 'frame1' className="flex-large">
-					<div className="flex-row">
-						<p><strong>Produtos</strong></p>
-						<button onClick = {demoDisplay}>+ <i class="fa fa-mobile fa-1x"></i>  Adicionar</button>
+			<div id= 'englobeall'>
+			<Header />
+			<br />
+			<div className="container">
+				<div className="flex-column">
+					<div id = 'frame1' className="flex-large">
+						<div className="flex-between">
+							<p><strong>Produtos</strong></p>
+							<button onClick = {demoDisplay}>+ <i class="fa fa-mobile fa-1x"></i>  Adicionar</button>
+						</div>
+						<ProductTable products={products} editRow={editRow} deleteProduct={deleteProduct} />
 					</div>
-					<ProductTable products={products} editRow={editRow} deleteProduct={deleteProduct} />
-				</div>
-				<div id = 'frame2' className="flex-large">
-					{editing ? (
-						<Fragment>
-							<p><strong>Detalhes do produto</strong></p>
-							<EditProductForm
-								editing={editing}
-								setEditing={setEditing}
-								currentProduct={currentProduct}
-								updateProduct={updateProduct}
-							/>
-						</Fragment>
-					) : (
-						<Fragment>
-							<p><strong>Detalhes do produto</strong></p>
-							<AddProductForm 
-								addProduct={addProduct}
-								updateProduct={updateProduct}
-							/>
-						</Fragment>
-					)}
+					<div id = 'frame2' className="flex-large">
+						{editing ? (
+							<Fragment>
+								<p><strong>Detalhes do produto</strong></p>
+								<EditProductForm
+									editing={editing}
+									setEditing={setEditing}
+									currentProduct={currentProduct}
+									updateProduct={updateProduct}
+								/>
+							</Fragment>
+						) : (
+							<Fragment>
+								<p><strong>Detalhes do produto</strong></p>
+								<AddProductForm 
+									addProduct={addProduct}
+									updateProduct={updateProduct}
+								/>
+							</Fragment>
+						)}
+					</div>
 				</div>
 			</div>
-		</div>
-		<Footer />
+			<br />
+			<Footer />
+			</div>
 		</React.Fragment>
 	)
 }

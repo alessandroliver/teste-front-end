@@ -17,6 +17,13 @@ const EditProductForm = props => {
     setProduct({ ...product, [name]: value })
   }
 
+  function setMinDate (){
+		var dateOneDay = new Date(document.getElementById("inicDateEdit").value)
+		var d = dateOneDay.getFullYear() + "-" + ("0" + (dateOneDay.getMonth() + 1)).slice(-2)
+				+ '-' + (dateOneDay.getDate() +2)
+		document.getElementById("finalDateEdit").setAttribute("min", d)
+	}
+
   return (
     <form
       onSubmit={event => {
@@ -40,9 +47,9 @@ const EditProductForm = props => {
         <option value="Pink">PINK</option>
       </select>
       <label>Início das vendas</label>
-			<input type="date" name="startDate" min="2018-12-26" value={product.startDate} onChange={handleInputChange} />
+			<input type="date" name="startDate" id = "inicDateEdit" min="2018-12-26" value={product.startDate} onChange={handleInputChange} />
       <label>Fim das vendas</label>
-			<input type="date" name="endDate" min={product.startDate} value={product.endDate} onChange={handleInputChange} />
+			<input type="date" name="endDate" id = "finalDateEdit" onClick = {setMinDate} value={product.endDate} onChange={handleInputChange} />
       <br />
       <button onClick={() => props.updateProduct()} className="button muted-button">
         Voltar
