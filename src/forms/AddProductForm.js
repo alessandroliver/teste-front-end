@@ -10,6 +10,19 @@ const AddProductForm = props => {
 		setProduct({ ...product, [name]: value })
 	}
 
+	function test (){
+		var dateOneDay = new Date(document.getElementById("inicDate").value)
+		var d = dateOneDay.getFullYear() + "-" + (dateOneDay.getMonth() + 1) + '-' + (dateOneDay.getDate() +2)
+		var dDate = new Date(d)
+		document.getElementById("finalDate").setAttribute("min", dDate)
+		console.log(d)
+		console.log(document.getElementById("inicDate").value)
+		console.log(dateOneDay)
+		console.log(dateOneDay.getFullYear())
+		//console.log(document.getElementById("inicDate"))
+		//console.log("aqui: " + document.getElementById("finalDate").setAttribute("min"))
+	}
+
 
 
 	return (
