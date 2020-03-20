@@ -133,6 +133,9 @@ const App = () => {
 				</div>
 			</div>
 			<br />
+			<br />
+			<br />
+			<br />
 			<Footer />
 			</div>
 		</React.Fragment>

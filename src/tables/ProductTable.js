@@ -27,7 +27,7 @@ const ProductTable = props => (
           <tr key={product.id}>
             <td>{product.id}</td>
             <td>{product.model}</td>
-            <td>{product.price}</td>
+            <td>{'R$ ' + product.price}</td>
             <td>{product.brand}</td>
             <td>{product.color}</td>
             <td>{dateFormat(product.startDate)}</td>
