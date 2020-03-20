@@ -15,7 +15,42 @@ const App = () => {
 
 	const initialFormState = { id: '', model: '', price: '', brand: '', color: '', startDate: '', endDate: '' }
 
-	return (
+    const addProduct = product => {
+		document.getElementById("frame2").style.display = "none";
+		document.getElementById("frame1").style.display = "block";
+
+		product.id = codeGenerator()
+		setProducts([ ...products, product ])
+	}
+
+	const deleteProduct = id => {
+		setEditing(false)
+
+		setProducts(products.filter(product => product.id !== id))
+	}
+
+	const updateProduct = (id, updatedProduct) => {
+		document.getElementById("frame2").style.display = "none";
+		document.getElementById("frame1").style.display = "block";
+
+
+		setEditing(false)
+
+		setProducts(products.map(product => (product.id === id ? updatedProduct : product)))
+	}
+
+	const editRow = product => {
+		document.getElementById("frame1").style.display = "none";
+		document.getElementById("frame2").style.display = "block";
+
+
+		setEditing(true)
+
+		setCurrentProduct({ id: product.id, model: product.model, price: product.price, brand: product.brand, color: product.color, startDate: product.startDate, endDate: product.endDate })
+	}
+
+    
+    return (
 		<div className="container">
 			<div className="flex-column">
 				<div id = 'frame1' className="flex-large">
