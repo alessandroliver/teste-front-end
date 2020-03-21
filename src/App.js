@@ -33,7 +33,6 @@ const App = () => {
 		 init();
 	 }, false);
 	 
-	
 	 function codeGenerator() {
 		let codeRandom =  Math.random().toString(36).slice(-8);
 		for (let index = 0; index < products.length; index++) {
@@ -82,18 +81,8 @@ const App = () => {
 	function demoDisplay() {
 		document.getElementById("frame1").style.display = "none";
 		document.getElementById("frame2").style.display = "block";
-		//document.getElementById('footer1').setAttribute('position', 'absolute')
-		//console.log(document.getElementById('footer1').getAttribute('position'))
 
 	}
-
-	
-
-	document.addEventListener("DOMContentLoaded", function (event) {
-		//document.getElementById('footer1').setAttribute('position', 'relative')
-
-	}, false);
-
 
 	return (
 		<React.Fragment>
@@ -112,7 +101,7 @@ const App = () => {
 					<div id = 'frame2' className="flex-large">
 						{editing ? (
 							<Fragment>
-								<p><strong>Detalhes do produto</strong></p>
+								<p className="dProd"><strong>Detalhes do produto</strong></p>
 								<EditProductForm
 									editing={editing}
 									setEditing={setEditing}
@@ -122,7 +111,7 @@ const App = () => {
 							</Fragment>
 						) : (
 							<Fragment>
-								<p><strong>Detalhes do produto</strong></p>
+								<p className="dProd"><strong>Detalhes do produto</strong></p>
 								<AddProductForm 
 									addProduct={addProduct}
 									updateProduct={updateProduct}

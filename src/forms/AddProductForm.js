@@ -29,7 +29,7 @@ const AddProductForm = props => {
 			}}
 		>
 			<label>Modelo</label>
-			<input type="text" name="model" title="Não é permitido espaço em branco!" pattern="[^' ']+" minLength="2" maxLength="255" value={product.model} onChange={handleInputChange} />
+			<input type="text" name="model" title="Não é permitido espaço em branco!" pattern="[^' ']+" minLength="2" maxLength="255" value={product.model} onChange={handleInputChange} />	
 			<label>Preço</label>
 			<input type="number" name="price" min="0.01" step="0.01" value={product.price} onChange={handleInputChange} />
 			<label>Marca</label>
